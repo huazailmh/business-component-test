@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 import logo from './logo.svg';
 import './App.css';
 import { Row, Col } from 'antd';
-import BusinessUIComponent from "./BusinessUIComponent";
+import Report from "./Report";
 
 const {
   Header, Content, Footer, Sider,
@@ -107,8 +107,8 @@ class App extends Component {
           <Content style={{ margin: '24px 16px 0' }}>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
             <Row>
-              <Col span={12}><BusinessUIComponent /></Col>
-              <Col span={12}>col-12</Col>
+              <Col span={12}><Report /></Col>
+              {/* <Col span={12}>col-12</Col> */}
             </Row>
             </div>
           </Content>

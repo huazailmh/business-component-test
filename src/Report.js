@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import logo from './logo.svg';
 import './App.css';
 import { Row, Col } from 'antd';
+import CruxList from "./CruxList";
 
 const {
   Header, Content, Footer, Sider,
@@ -38,10 +39,26 @@ const columns = [{
   key: 'address',
 }];
 
-class BusinessUIComponent extends Component {
-  state = {
-    componentCount: 0
-  };
+class Report extends Component {
+  constructor(props) {
+    super(props);
+    //this.handleChange = this.handleChange.bind(this);
+    //component should be retrieved by report name
+    //report name comes from props
+    var timestamp = new Date();
+    this.state = {
+      reportName: timestamp,
+      componentArr: [
+        {
+          "type": CruxList,
+          "props": {
+            "dataSourceUrl": "xxx"
+          }
+        }
+      ]
+    };
+  }
+
   myRef = React.createRef();
 
   addComponent = function() {
@@ -79,10 +96,14 @@ class BusinessUIComponent extends Component {
     var tableProps = {dataSource:dataSource, columns:columns};
     var table = React.createElement(Table, tableProps);
 
-
-
-    return table;
+    
+    var com = this.state.componentArr[0]
+    var comProps = com.props;
+    var type = com.type;
+    var comIns = React.createElement(type, comProps);
+    ;
+    return React.createElement("div", {}, [React.createElement("h2", {}, this.state.reportName.toDateString()), comIns]);
   }
 }
 
-export default BusinessUIComponent;
+export default Report;
