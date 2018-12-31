@@ -32,7 +32,16 @@ var button3 = React.createElement(Button, button3Props, "Button3");
 var button4Props = {type: "danger"}
 var button4 = React.createElement(Button, button4Props, "Button4");
 
-var reactElement = React.createElement("div", {}, [button1,button2,button3,button4]);
+var button5OnClick = function(event) {
+    console.log("event.target: " + event.target);
+    console.log("event.target.type: " + event.target.type);
+    console.log("event.target.size: " + event.target.size);
+}
+var button5Props = {type: "danger", size: "large", onClick: button5OnClick};
+
+var button5 = React.createElement(Button, button5Props, "Button5");
+
+var reactElement = React.createElement("div", {}, [button1,button2,button3,button4, button5]);
 
 ReactDOM.render(reactElement, document.getElementById('root'));
 
