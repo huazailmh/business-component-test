@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
+import { Button } from 'antd';
+import 'antd/dist/antd.css';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    componentCount: 0
+  };
+
+  addComponent = function() {
+    console.log("onclick");
+    this.setState({ componentCount: this.state.componentCount + 1 });
+  }
+
   render() {
-    return (
+    //const cc = this.state.componentCount;
+
+/*     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Button onClick={this.addComponent.bind(this)}>Add Component ({this.state.componentCount})</Button>
       </div>
-    );
+    ); */
+
+    var buttonProps = {onClick: this.addComponent.bind(this)};
+    var childrend = "Add Component (" + this.state.componentCount + ")"
+    var button = React.createElement(Button, buttonProps, childrend);
+    return React.createElement("div", {}, button)
   }
 }
 

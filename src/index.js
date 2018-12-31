@@ -8,7 +8,7 @@ import 'antd/dist/antd.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-//ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 //ReactDOM.render(<Button type="danger">Button</Button>, document.getElementById('root'));
 
 // ReactDOM.render(
@@ -47,7 +47,7 @@ var reactElement = React.createElement("div", {}, [button1,button2,button3,butto
 ReactDOM.render(reactElement, document.getElementById('root'));
  */
 
-const columns = [{
+/* const columns = [{
   title: 'Name',
   dataIndex: 'name',
   key: 'name',
@@ -101,9 +101,19 @@ const data = [{
   tags: ['cool', 'teacher'],
 }];
 
-var props = {columns: columns, dataSource: data};
+const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+    getCheckboxProps: record => ({
+      disabled: record.name === 'Disabled User', // Column configuration not to be checked
+      name: record.name,
+    }),
+  };
+
+var props = {rowSelection: rowSelection, columns: columns, dataSource: data};
 var reactElement = React.createElement(Table, props)
-ReactDOM.render(reactElement, document.getElementById('root'));
+ReactDOM.render(reactElement, document.getElementById('root')); */
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
